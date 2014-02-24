@@ -17,7 +17,7 @@
         #define PLATFORM_ANDROID 1
     #endif
 #elif defined(_WIN32)
-    #define PLATFORM_WINDOWS
+    #define PLATFORM_WINDOWS 1
 #elif defined(__APPLE__)
     // Detect iOS before MacOSX (__MACH__ is also defined for iOS)
     #if defined(IPHONE)
