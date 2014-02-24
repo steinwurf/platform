@@ -4,7 +4,7 @@ Introduction
 Currently, it can detect the following properties:
 
 - Compiler: g++, clang, MSVC
-- Operating system: Linux, Mac OSX, Windows
+- Operating system: Linux, Mac OSX, Windows, iOS, Android
 - Target architecture: x86, ARM, MIPS
 
 License
@@ -15,8 +15,7 @@ file for more details.
 Platforms
 ---------
 The project is tesed on various versions of Windows, Linux and Mac. We run
-automated tests on x86 and ARM architectures with different compilers like
-g++, clang and Microsoft Visual Studio.
+automated tests on x86, ARM and MIPS architectures with different compilers.
 
 You can see the status by selecting the 'platform' project on the
 `Steinwurf buildbot page <http://buildbot.steinwurf.dk:12344/>`_.
