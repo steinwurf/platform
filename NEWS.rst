@@ -10,4 +10,4 @@ Latest
 
 1.0.0
 -----
-* Major: Initial release with support for x86 and ARM architectures.
+* Major: Initial release.
