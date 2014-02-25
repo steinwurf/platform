@@ -12,9 +12,9 @@ License
 The project license is based on the BSD License. Please refer to the LICENSE.rst
 file for more details.
 
-Platforms
----------
-The project is tesed on various versions of Windows, Linux and Mac. We run
+Testing
+-------
+The project is tested on various versions of Windows, Linux and Mac. We run
 automated tests on x86, ARM and MIPS architectures with different compilers.
 
 You can see the status by selecting the 'platform' project on the
