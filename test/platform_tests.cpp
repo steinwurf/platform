@@ -19,7 +19,7 @@ TEST(Platform, check_operating_system)
 #if defined(PLATFORM_LINUX)
     #if defined(PLATFORM_ANDROID)
         EXPECT_TRUE(os == "android");
-    #elif
+    #else
         EXPECT_TRUE(os == "linux");
     #endif
 #elif defined(PLATFORM_WINDOWS)
