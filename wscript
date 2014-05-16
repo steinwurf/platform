@@ -45,10 +45,10 @@ def configure(conf):
         conf.load('wurf_dependency_bundle')
         conf.load('wurf_tools')
 
-        conf.load_external_tool('mkspec', 'wurf_cxx_mkspec_tool')
-        conf.load_external_tool('runners', 'wurf_runner')
         conf.load_external_tool('install_path', 'wurf_install_path')
+        conf.load_external_tool('mkspec', 'wurf_cxx_mkspec_tool')
         conf.load_external_tool('project_gen', 'wurf_project_generator')
+        conf.load_external_tool('runners', 'wurf_runner')
 
         recurse_helper(conf, 'boost')
         recurse_helper(conf, 'gtest')
