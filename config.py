@@ -1,18 +1,19 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
-import os, sys, urllib2, traceback
+import urllib2
+import traceback
 
 project_name = 'platform'
-project_dependencies = \
-[
+project_dependencies = [
     'waf-tools',
     'gtest',
 ]
 
-# Importing a dynamically generated module
-# Python recipe from http://code.activestate.com/recipes/82234
-def importCode(code,name,add_to_sys_modules=0):
+
+def importCode(code, name, add_to_sys_modules=0):
+    # Importing a dynamically generated module
+    # Python recipe from http://code.activestate.com/recipes/82234
     """
     Import dynamically generated code as a module. code is the
     object containing the code (a string, a file handle or an
@@ -32,7 +33,8 @@ def importCode(code,name,add_to_sys_modules=0):
 
     Returns a newly generated module.
     """
-    import sys,imp
+    import sys
+    import imp
 
     module = imp.new_module(name)
 
@@ -57,7 +59,7 @@ if __name__ == '__main__':
         print("Update complete. Code size: {}\n".format(len(code)))
         try:
             # Import the code string as a module
-            mod = importCode(code,"config_helper")
+            mod = importCode(code, "config_helper")
             # Run the actual config tool from the dynamic module
             mod.config_tool(project_dependencies)
         except:

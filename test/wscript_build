@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 bld.program(
-    features = 'cxx test',
-    source   = bld.path.ant_glob('**/*.cpp'),
-    target   = 'platform_tests',
-    use      = ['platform_includes', 'gtest', 'boost_program_options'])
+    features='cxx test',
+    source=bld.path.ant_glob('**/*.cpp'),
+    target='platform_tests',
+    use=['platform_includes', 'gtest', 'boost_program_options'])
