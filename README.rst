@@ -7,6 +7,9 @@ Currently, it can detect the following properties:
 - Operating system: Linux, Mac OSX, Windows, iOS, Android
 - Target architecture: x86, ARM, MIPS
 
+.. image:: http://buildbot.steinwurf.dk/svgstatus?project=platform
+    :target: http://buildbot.steinwurf.dk/stats?projects=platform
+
 License
 -------
 The project license is based on the BSD License. Please refer to the LICENSE.rst
