@@ -28,6 +28,8 @@ TEST(Platform, check_operating_system)
     EXPECT_TRUE(os == "mac");
 #elif defined(PLATFORM_IOS)
     EXPECT_TRUE(os == "ios");
+#elif defined(PLATFORM_BROWSER)
+    EXPECT_TRUE(os == "browser");
 #else
     #error "Undefined operating system"
 #endif
@@ -50,6 +52,9 @@ TEST(Platform, check_compiler)
     #elif defined(PLATFORM_CLANG_MIPS)
         EXPECT_TRUE(arch == "mips");
         EXPECT_TRUE(PLATFORM_GCC_COMPATIBLE_MIPS);
+    #elif defined(PLATFORM_CLANG_ASMJS)
+        EXPECT_TRUE(arch == "asmjs");
+        EXPECT_TRUE(PLATFORM_GCC_COMPATIBLE_ASMJS);
     #else
         #error "Undefined CPU architecture"
     #endif
@@ -92,6 +97,8 @@ TEST(Platform, check_architecture)
     EXPECT_TRUE(arch == "arm");
 #elif defined(PLATFORM_MIPS)
     EXPECT_TRUE(arch == "mips");
+#elif defined(PLATFORM_ASMJS)
+    EXPECT_TRUE(arch == "ASMJS");
 #else
     #error "Undefined CPU architecture"
 #endif
