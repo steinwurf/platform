@@ -6,6 +6,10 @@ every change, see the Git log.
 
 Latest
 ------
+* tbd
+
+1.1.0
+-----
 * Minor: Added support for Emscripten platform/compiler.
 * Minor: Update to waf 1.8.0-pre1
 * Minor: Made python files comply with pep8
