@@ -26,7 +26,7 @@
         #define PLATFORM_MAC 1
     #endif
 #elif defined(__EMSCRIPTEN__)
-    #define PLATFORM_BROWSER 1
+    #define PLATFORM_EMSCRIPTEN 1
 #else
     #error "Unable to determine operating system"
 #endif

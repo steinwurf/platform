@@ -28,8 +28,8 @@ TEST(Platform, check_operating_system)
     EXPECT_TRUE(os == "mac");
 #elif defined(PLATFORM_IOS)
     EXPECT_TRUE(os == "ios");
-#elif defined(PLATFORM_BROWSER)
-    EXPECT_TRUE(os == "browser");
+#elif defined(PLATFORM_EMSCRIPTEN)
+    EXPECT_TRUE(os == "emscripten");
 #else
     #error "Undefined operating system"
 #endif
