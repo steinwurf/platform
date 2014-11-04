@@ -6,6 +6,7 @@ every change, see the Git log.
 
 Latest
 ------
+* Minor: Added support for Emscripten platform/compiler.
 * Minor: Update to waf 1.8.0-pre1
 * Minor: Made python files comply with pep8
 
