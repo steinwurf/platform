@@ -25,6 +25,8 @@
     #elif defined(__MACH__)
         #define PLATFORM_MAC 1
     #endif
+#elif defined(__EMSCRIPTEN__)
+    #define PLATFORM_EMSCRIPTEN 1
 #else
     #error "Unable to determine operating system"
 #endif
@@ -47,6 +49,10 @@
         #define PLATFORM_MIPS 1
         #define PLATFORM_CLANG_MIPS 1
         #define PLATFORM_GCC_COMPATIBLE_MIPS 1
+    #elif defined(__asmjs__)
+        #define PLATFORM_ASMJS 1
+        #define PLATFORM_CLANG_ASMJS 1
+        #define PLATFORM_GCC_COMPATIBLE_ASMJS 1
     #endif
 #elif defined(__GNUC__)
     #define PLATFORM_GCC 1

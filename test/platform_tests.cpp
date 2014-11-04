@@ -18,16 +18,18 @@ TEST(Platform, check_operating_system)
 
 #if defined(PLATFORM_LINUX)
     #if defined(PLATFORM_ANDROID)
-        EXPECT_TRUE(os == "android");
+        EXPECT_EQ(os, "android");
     #else
-        EXPECT_TRUE(os == "linux");
+        EXPECT_EQ(os, "linux");
     #endif
 #elif defined(PLATFORM_WINDOWS)
-    EXPECT_TRUE(os == "windows");
+    EXPECT_EQ(os, "windows");
 #elif defined(PLATFORM_MAC)
-    EXPECT_TRUE(os == "mac");
+    EXPECT_EQ(os, "mac");
 #elif defined(PLATFORM_IOS)
-    EXPECT_TRUE(os == "ios");
+    EXPECT_EQ(os, "ios");
+#elif defined(PLATFORM_EMSCRIPTEN)
+    EXPECT_EQ(os, "emscripten");
 #else
     #error "Undefined operating system"
 #endif
@@ -39,41 +41,44 @@ TEST(Platform, check_compiler)
     std::string arch = variable_map["arch"].as<std::string>();
 
 #if defined(PLATFORM_CLANG)
-    EXPECT_TRUE(compiler == "clang");
+    EXPECT_EQ(compiler, "clang");
     EXPECT_TRUE(PLATFORM_GCC_COMPATIBLE);
     #if defined(PLATFORM_CLANG_X86)
         EXPECT_TRUE(arch == "x86" || arch == "x86_64");
         EXPECT_TRUE(PLATFORM_GCC_COMPATIBLE_X86);
     #elif defined(PLATFORM_CLANG_ARM)
-        EXPECT_TRUE(arch == "arm");
+        EXPECT_EQ(arch, "arm");
         EXPECT_TRUE(PLATFORM_GCC_COMPATIBLE_ARM);
     #elif defined(PLATFORM_CLANG_MIPS)
-        EXPECT_TRUE(arch == "mips");
+        EXPECT_EQ(arch, "mips");
         EXPECT_TRUE(PLATFORM_GCC_COMPATIBLE_MIPS);
+    #elif defined(PLATFORM_CLANG_ASMJS)
+        EXPECT_EQ(arch, "asmjs");
+        EXPECT_TRUE(PLATFORM_GCC_COMPATIBLE_ASMJS);
     #else
         #error "Undefined CPU architecture"
     #endif
 #elif defined(PLATFORM_GCC)
-    EXPECT_TRUE(compiler == "gcc");
+    EXPECT_EQ(compiler, "gcc");
     EXPECT_TRUE(PLATFORM_GCC_COMPATIBLE);
     #if defined(PLATFORM_GCC_X86)
         EXPECT_TRUE(arch == "x86" || arch == "x86_64");
         EXPECT_TRUE(PLATFORM_GCC_COMPATIBLE_X86);
     #elif defined(PLATFORM_GCC_ARM)
-        EXPECT_TRUE(arch == "arm");
+        EXPECT_EQ(arch, "arm");
         EXPECT_TRUE(PLATFORM_GCC_COMPATIBLE_ARM);
     #elif defined(PLATFORM_GCC_MIPS)
-        EXPECT_TRUE(arch == "mips");
+        EXPECT_EQ(arch, "mips");
         EXPECT_TRUE(PLATFORM_GCC_COMPATIBLE_MIPS);
     #else
         #error "Undefined CPU architecture"
     #endif
 #elif defined(PLATFORM_MSVC)
-    EXPECT_TRUE(compiler == "msvc");
+    EXPECT_EQ(compiler, "msvc");
     #if defined(PLATFORM_MSVC_X86)
         EXPECT_TRUE(arch == "x86" || arch == "x86_64");
     #elif defined(PLATFORM_MSVC_ARM)
-        EXPECT_TRUE(arch == "arm");
+        EXPECT_EQ(arch, "arm");
     #else
         #error "Undefined CPU architecture"
     #endif
@@ -89,9 +94,11 @@ TEST(Platform, check_architecture)
 #if defined(PLATFORM_X86)
     EXPECT_TRUE(arch == "x86" || arch == "x86_64");
 #elif defined(PLATFORM_ARM)
-    EXPECT_TRUE(arch == "arm");
+    EXPECT_EQ(arch, "arm");
 #elif defined(PLATFORM_MIPS)
-    EXPECT_TRUE(arch == "mips");
+    EXPECT_EQ(arch, "mips");
+#elif defined(PLATFORM_ASMJS)
+    EXPECT_EQ(arch, "asmjs");
 #else
     #error "Undefined CPU architecture"
 #endif
