@@ -59,6 +59,8 @@ def build(bld):
     # Export includes
     bld(includes='./src',
         export_includes='./src',
+        export_defines=[
+            'STEINWURF_{}_VERSION="{}"'.format(APPNAME.upper(), VERSION)],
         name='platform_includes')
 
     if bld.is_toplevel():
