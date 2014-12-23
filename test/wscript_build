@@ -3,6 +3,6 @@
 
 bld.program(
     features='cxx test',
-    source=bld.path.ant_glob('**/*.cpp'),
+    source=['platform_tests.cpp'] + bld.path.ant_glob('src/*.cpp'),
     target='platform_tests',
     use=['platform_includes', 'gtest', 'boost_program_options'])
