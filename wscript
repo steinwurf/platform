@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 APPNAME = 'platform'
-VERSION = '1.1.0'
+VERSION = '1.2.0'
 
 
 def recurse_helper(ctx, name):
