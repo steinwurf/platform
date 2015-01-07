@@ -56,12 +56,6 @@ def configure(conf):
 
 def build(bld):
 
-    # Export includes
-    bld(includes='./src',
-        export_includes='./src',
-        export_defines=['STEINWURF_PLATFORM_VERSION="{}"'.format(VERSION)],
-        name='platform_includes')
-
     if bld.is_toplevel():
 
         bld.load('wurf_dependency_bundle')
@@ -73,3 +67,11 @@ def build(bld):
         # top-level wscript i.e. not when included as a dependency
         # in a recurse call
         bld.recurse('test')
+
+    bld(includes='./src',
+        export_includes='./src',
+        name='platform_includes')
+
+    bld.env.append_unique(
+        'DEFINES_STEINWURF_VERSION',
+        'STEINWURF_PLATFORM_VERSION="{}"'.format(VERSION))
