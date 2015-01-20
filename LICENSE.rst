@@ -1,5 +1,5 @@
 platform license
--------------
+----------------
 platform is provided under the "BSD (3-clause) License"::
 
   Copyright (c) 2014, Steinwurf ApS
