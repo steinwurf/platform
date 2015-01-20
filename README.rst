@@ -1,11 +1,11 @@
-Introduction
-------------
-*platform* is a C++ library for detecting compiler and platform properties.
+platform
+--------
+platform is a C++ library for detecting compiler and platform properties.
 Currently, it can detect the following properties:
 
-- Compiler: g++, clang, MSVC
-- Operating system: Linux, Mac OSX, Windows, iOS, Android
-- Target architecture: x86, ARM, MIPS
+- Compiler: g++, clang, and MSVC
+- Operating system: Linux, Mac OSX, Windows, iOS, and Android
+- Target architecture: x86, ARM, and MIPS
 
 .. image:: http://buildbot.steinwurf.dk/svgstatus?project=platform
     :target: http://buildbot.steinwurf.dk/stats?projects=platform
