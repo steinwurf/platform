@@ -41,7 +41,7 @@
         #define PLATFORM_X86 1
         #define PLATFORM_CLANG_X86 1
         #define PLATFORM_GCC_COMPATIBLE_X86 1
-    #elif defined(__arm__)
+    #elif defined(__arm__) || defined (__arm64__)
         #define PLATFORM_ARM 1
         #define PLATFORM_CLANG_ARM 1
         #define PLATFORM_GCC_COMPATIBLE_ARM 1
@@ -61,7 +61,7 @@
         #define PLATFORM_X86 1
         #define PLATFORM_GCC_X86 1
         #define PLATFORM_GCC_COMPATIBLE_X86 1
-    #elif defined(__arm__)
+    #elif defined(__arm__) || defined (__arm64__)
         #define PLATFORM_ARM 1
         #define PLATFORM_GCC_ARM 1
         #define PLATFORM_GCC_COMPATIBLE_ARM 1
