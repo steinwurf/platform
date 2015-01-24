@@ -8,6 +8,10 @@ Latest
 ------
 * tbd
 
+1.2.2
+-----
+* Patch: Added check for __arm64__ define to also detect 64-bit ARM CPUs.
+
 1.2.1
 -----
 * Patch: Fix version define.
