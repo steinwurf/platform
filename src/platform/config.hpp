@@ -118,7 +118,7 @@
     #if defined(__ARM_NEON__)
         #define PLATFORM_NEON 1
     #endif
-#elif defined(PLATFORM_MSVC)
+#elif defined(PLATFORM_MSVC_X86)
     // MMX, SSE and SSE2 introduced in VS2003
     #if (_MSC_VER >= 1310)
         #define PLATFORM_MMX 1
@@ -140,5 +140,10 @@
     #if (_MSC_VER >= 1700)
         #define PLATFORM_AVX 1
         #define PLATFORM_AVX2 1
+    #endif
+#elif defined(PLATFORM_MSVC_ARM)
+    // NEON introduced in VS2012
+    #if (_MSC_VER >= 1700)
+        #define PLATFORM_NEON 1
     #endif
 #endif
