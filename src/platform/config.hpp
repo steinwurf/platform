@@ -18,6 +18,12 @@
     #endif
 #elif defined(_WIN32)
     #define PLATFORM_WINDOWS 1
+    #if defined(WINAPI_FAMILY)
+        #include <winapifamily.h>
+        #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_PHONE_APP)
+            #define PLATFORM_WINDOWS_PHONE 1
+        #endif
+    #endif
 #elif defined(__APPLE__)
     // Detect iOS before MacOSX (__MACH__ is also defined for iOS)
     #if defined(IPHONE)
@@ -118,6 +124,15 @@
     #if defined(__ARM_NEON__)
         #define PLATFORM_NEON 1
     #endif
+// First, check the PLATFORM_WINDOWS_PHONE define, because
+// the X86 instructions sets are not supported on the Windows Phone emulator 
+#elif defined(PLATFORM_WINDOWS_PHONE)
+    #if defined(PLATFORM_MSVC_ARM)
+        // NEON introduced in VS2012
+        #if (_MSC_VER >= 1700)
+            #define PLATFORM_NEON 1
+        #endif
+    #endif
 #elif defined(PLATFORM_MSVC_X86)
     // MMX, SSE and SSE2 introduced in VS2003
     #if (_MSC_VER >= 1310)
@@ -140,10 +155,5 @@
     #if (_MSC_VER >= 1700)
         #define PLATFORM_AVX 1
         #define PLATFORM_AVX2 1
-    #endif
-#elif defined(PLATFORM_MSVC_ARM)
-    // NEON introduced in VS2012
-    #if (_MSC_VER >= 1700)
-        #define PLATFORM_NEON 1
     #endif
 #endif
