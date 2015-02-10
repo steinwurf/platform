@@ -6,6 +6,10 @@ every change, see the Git log.
 
 Latest
 ------
+* tbd
+
+1.3.0
+-----
 * Minor: Added PLATFORM_WINDOWS_PHONE for the Windows Phone target
 
 1.2.2
