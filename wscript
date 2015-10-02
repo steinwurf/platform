@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 APPNAME = 'platform'
-VERSION = '1.3.0'
+VERSION = '2.0.0'
 
 import waflib.extras.wurf_options
 

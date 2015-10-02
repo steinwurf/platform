@@ -8,6 +8,12 @@ Latest
 ------
 * tbd
 
+2.0.0
+-----
+* Major: Upgrade to waf-tools 3
+* Minor: Upgrade to boost 2
+* Minor: Upgrade to gtest 3
+
 1.3.0
 -----
 * Minor: Added PLATFORM_WINDOWS_PHONE for the Windows Phone target
