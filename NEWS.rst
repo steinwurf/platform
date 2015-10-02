@@ -11,7 +11,7 @@ Latest
 2.0.0
 -----
 * Major: Upgrade to waf-tools 3
-* Minor: Upgrade to boost 2
+* Major: Upgrade to boost 2
 * Minor: Upgrade to gtest 3
 
 1.3.0
