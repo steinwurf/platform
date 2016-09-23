@@ -19,12 +19,12 @@ GTEST_API_ int main(int argc, char** argv)
 
     po::options_description options;
     options.add_options()
-        ("os", po::value<std::string>()->default_value(""),
-         "Operating system: [linux|windows|mac|ios|android]")
-        ("compiler", po::value<std::string>()->default_value(""),
-         "Compiler: [gcc|clang|msvc]")
-        ("arch", po::value<std::string>()->default_value(""),
-         "Architecture: [x86|x86_64|arm|mips]");
+    ("os", po::value<std::string>()->default_value(""),
+     "Operating system: [linux|windows|mac|ios|android]")
+    ("compiler", po::value<std::string>()->default_value(""),
+     "Compiler: [gcc|clang|msvc]")
+    ("arch", po::value<std::string>()->default_value(""),
+     "Architecture: [x86|x86_64|arm|mips]");
 
     po::store(po::parse_command_line(argc, argv, options), variable_map);
     po::notify(variable_map);
