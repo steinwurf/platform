@@ -124,8 +124,8 @@
     #if defined(__ARM_NEON__)
         #define PLATFORM_NEON 1
     #endif
-// First, check the PLATFORM_WINDOWS_PHONE define, because
-// the X86 instructions sets are not supported on the Windows Phone emulator 
+    // First, check the PLATFORM_WINDOWS_PHONE define, because
+    // the X86 instructions sets are not supported on the Windows Phone emulator
 #elif defined(PLATFORM_WINDOWS_PHONE)
     #if defined(PLATFORM_MSVC_ARM)
         // NEON introduced in VS2012
