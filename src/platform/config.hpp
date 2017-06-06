@@ -47,7 +47,7 @@
         #define PLATFORM_X86 1
         #define PLATFORM_CLANG_X86 1
         #define PLATFORM_GCC_COMPATIBLE_X86 1
-    #elif defined(__arm__) || defined (__arm64__)
+    #elif defined(__arm__) || defined (__arm64__) || defined (__aarch64__)
         #define PLATFORM_ARM 1
         #define PLATFORM_CLANG_ARM 1
         #define PLATFORM_GCC_COMPATIBLE_ARM 1
@@ -67,7 +67,7 @@
         #define PLATFORM_X86 1
         #define PLATFORM_GCC_X86 1
         #define PLATFORM_GCC_COMPATIBLE_X86 1
-    #elif defined(__arm__) || defined (__arm64__)
+    #elif defined(__arm__) || defined (__arm64__) || defined (__aarch64__)
         #define PLATFORM_ARM 1
         #define PLATFORM_GCC_ARM 1
         #define PLATFORM_GCC_COMPATIBLE_ARM 1
@@ -121,7 +121,7 @@
     #if defined(__AVX2__)
         #define PLATFORM_AVX2 1
     #endif
-    #if defined(__ARM_NEON__)
+    #if defined(__ARM_NEON__) || defined (__ARM_NEON)
         #define PLATFORM_NEON 1
     #endif
     // First, check the PLATFORM_WINDOWS_PHONE define, because
