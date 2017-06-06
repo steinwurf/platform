@@ -7,6 +7,9 @@ every change, see the Git log.
 Latest
 ------
 * tbd
+
+3.0.1
+-----
 * Patch: Correctly handle 64-bit ARM Android targets that only define the
   __aarch64__ flag.
 
