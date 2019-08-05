@@ -18,7 +18,7 @@ in your CMake build script:
 
 ::
 
-   add_subdirectory("/path/to/platform" )
+   add_subdirectory("/path/to/platform" platform)
    target_link_libraries(<my_target> steinwurf::platform)
 
 Where ``<my_target>`` is replaced by your target.
