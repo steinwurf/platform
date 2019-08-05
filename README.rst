@@ -10,6 +10,19 @@ Currently, it can detect the following properties:
 .. image:: http://buildbot.steinwurf.dk/svgstatus?project=platform
     :target: http://buildbot.steinwurf.dk/stats?projects=platform
 
+Use as Dependency in CMake
+--------------------------
+
+To depend on this project when using the CMake build system, add the following
+in your CMake build script:
+
+::
+
+   add_subdirectory("/path/to/platform" )
+   target_link_libraries(<my_target> steinuwrf::platform)
+
+Where ``<my_target>`` is replaced by your target.
+
 License
 -------
 The project license is based on the BSD License. Please refer to the LICENSE.rst
