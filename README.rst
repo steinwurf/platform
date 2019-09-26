@@ -11,9 +11,6 @@ Currently, it can detect the following properties:
 - Operating system: Linux, Mac OSX, Windows, iOS, and Android
 - Target architecture: x86, x86_64, ARM, and MIPS
 
-.. image:: https://travis-ci.org/steinwurf/platform.svg?branch=master
-    :target: https://travis-ci.org/steinwurf/platform
-
 Use as Dependency in CMake
 --------------------------
 
