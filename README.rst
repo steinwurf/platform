@@ -1,5 +1,9 @@
 platform
 --------
+
+.. image:: https://travis-ci.org/steinwurf/platform.svg?branch=master
+    :target: https://travis-ci.org/steinwurf/platform
+    
 platform is a C++ library for detecting compiler and platform properties.
 Currently, it can detect the following properties:
 
