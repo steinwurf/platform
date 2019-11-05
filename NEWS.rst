@@ -8,6 +8,10 @@ Latest
 ------
 * tbd
 
+3.3.0
+-----
+* Minor: Lowered required cmake version.
+
 3.2.0
 -----
 * Minor: Improve cmake build file.
