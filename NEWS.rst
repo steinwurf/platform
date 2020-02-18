@@ -8,6 +8,10 @@ Latest
 ------
 * tbd
 
+3.4.0
+-----
+* Minor: Upgrade to boost 4
+
 3.3.0
 -----
 * Minor: Lowered required cmake version.
