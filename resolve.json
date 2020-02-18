@@ -4,15 +4,19 @@
         "resolver": "git",
         "method": "semver",
         "major": 4,
-        "sources": ["github.com/steinwurf/waf-tools.git"]
+        "sources": [
+            "github.com/steinwurf/waf-tools.git"
+        ]
     },
     {
         "name": "boost",
         "internal": true,
         "resolver": "git",
         "method": "semver",
-        "major": 3,
-        "sources": ["github.com/steinwurf/boost.git"]
+        "major": 4,
+        "sources": [
+            "github.com/steinwurf/boost.git"
+        ]
     },
     {
         "name": "gtest",
@@ -20,6 +24,8 @@
         "resolver": "git",
         "method": "semver",
         "major": 4,
-        "sources": ["github.com/steinwurf/gtest.git"]
+        "sources": [
+            "github.com/steinwurf/gtest.git"
+        ]
     }
 ]
