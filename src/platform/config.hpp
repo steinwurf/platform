@@ -13,7 +13,7 @@
 // Detect operating systems
 #if defined(__linux__)
     #define PLATFORM_LINUX 1
-    #if defined(ANDROID) || defined(__ANDROID__)
+    #if defined(__ANDROID__)
         #define PLATFORM_ANDROID 1
     #endif
 #elif defined(_WIN32)
@@ -33,8 +33,6 @@
     #endif
 #elif defined(__EMSCRIPTEN__)
     #define PLATFORM_EMSCRIPTEN 1
-#elif defined(ARDUINO)
-    #define PLATFORM_ARDUINO 1
 #else
     #error "Unable to determine operating system"
 #endif
