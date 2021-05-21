@@ -5,8 +5,8 @@
 
 #include <platform/config.hpp>
 
-#include <string>
 #include <cstdint>
+#include <string>
 
 #include <boost/program_options.hpp>
 
