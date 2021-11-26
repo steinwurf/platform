@@ -32,5 +32,5 @@ jobs:
         run: |
           echo "::add-matcher::.github/gcc-problem-matcher.json"
           python3 waf
-      - name: Test
-        run: python3 waf --run_tests
+      # - name: Test
+      #   run: python3 waf --run_tests
