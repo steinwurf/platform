@@ -20,18 +20,33 @@ jobs:
           - container: ghcr.io/steinwurf/gcc-11.2.0
             cxx_mkspec: --cxx_mkspec=cxx_gxx112_x64
             name: GCC 11.2
+            test_compiler: gcc
+            test_os: linux
+            test_arch: x86_64
           - container: ghcr.io/steinwurf/gcc-6.3.0
             cxx_mkspec: --cxx_mkspec=cxx_gxx63_x64
             name: GCC 6.3
+            test_compiler: gcc
+            test_os: linux
+            test_arch: x86_64
           - container: ghcr.io/steinwurf/clang-3.9
             name: Clang 3.9
             cxx_mkspec: --cxx_mkspec=cxx_clang39_x64
+            test_compiler: clang
+            test_os: linux
+            test_arch: x86_64
           - container: ghcr.io/steinwurf/clang-13
             name: Clang 13
             cxx_mkspec: --cxx_mkspec=cxx_clang130_x64
+            test_compiler: clang
+            test_os: linux
+            test_arch: x86_64
           - container: ghcr.io/steinwurf/clang-13
             cxx_mkspec: --cxx_mkspec=cxx_clang13_address_sanitizer_x64
             name: Clang 13 Address Sanitizer
+            test_compiler: clang
+            test_os: linux
+            test_arch: x86_64
           # TODO: Re-able this when we have fixed memory issue in google-test
           # - container: ghcr.io/steinwurf/clang13
           #   cxx_mkspec: --cxx_mkspec=cxx_clang13_memory_sanitizer_x64
@@ -39,6 +54,9 @@ jobs:
           - container: ghcr.io/steinwurf/clang-13
             cxx_mkspec: --cxx_mkspec=cxx_clang13_thread_sanitizer_x64
             name: Clang 13 Thread Sanitizer
+            test_compiler: clang
+            test_os: linux
+            test_arch: x86_64
     runs-on: [self-hosted, docker, builder]
     name: ${{ matrix.config.name }}
     container:
@@ -77,10 +95,10 @@ jobs:
         run: |
           echo "::add-matcher::.github/gcc-problem-matcher.json"
           python3 waf
-      - name: Upload bourne_tests Artifact
+      - name: Upload platform_tests Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: raspberry_bourne_tests
+          name: raspberry_platform_tests
           path: |
             build/linux/test
             !build/linux/test/**/**.*
@@ -94,10 +112,19 @@ jobs:
         config:
           - cxx_mkspec: cxx_msvc16_x86
             name: MSVC 16 32-bit
+            test_compiler: msvc
+            test_os: windows
+            test_arch: x86
           - cxx_mkspec: cxx_msvc16_x64
             name: MSVC 16 64-bit
+            test_compiler: msvc
+            test_os: windows
+            test_arch: x86_64
           - cxx_mkspec: cxx_apple_llvm120_x64
             name: Apple LLVM 12.0 64-bit
+            test_compiler: clang
+            test_os: mac
+            test_arch: x86_64
     runs-on: [self-hosted, "${{ matrix.config.cxx_mkspec }}", builder]
     name: ${{ matrix.config.name }}
     env:
