@@ -74,7 +74,7 @@ jobs:
           echo "::add-matcher::.github/gcc-problem-matcher.json"
           python3 waf
       - name: Waf Test
-        run: python3 waf --run_tests
+        run: python3 waf --run_tests --run_cmd="%s --os=${{matrix.config.test_os}} --compiler=${{matrix.config.test_compiler}} --arch=${{matrix.config.test_arch}}"
 
   cross-compile-raspberry-pi:
     strategy:
@@ -144,4 +144,4 @@ jobs:
           echo "::add-matcher::.github/gcc-problem-matcher.json"
           ${{ env.python }} waf
       - name: Test
-        run: ${{ env.python }} waf --run_tests
+        run: ${{ env.python }} waf --run_tests --run_cmd="%s --os=${{matrix.config.test_os}} --compiler=${{matrix.config.test_compiler}} --arch=${{matrix.config.test_arch}}"
