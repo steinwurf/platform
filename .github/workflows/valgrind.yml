@@ -21,6 +21,10 @@ jobs:
       options: --user 0:0
       volumes:
         - /home/buildbot/.ssh:/root/.ssh
+    env:
+      test_compiler: gcc
+      test_os: linux
+      test_arch: x86
     steps:
       - name: Checkout
         uses: actions/checkout@v2
