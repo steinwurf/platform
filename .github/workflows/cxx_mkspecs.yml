@@ -10,38 +10,38 @@ on:
   push:
   pull_request:
 env:
-  EXTRA_RESOLVE_OPTIONS: ${{ github.event.inputs.resolve_options }}
+  EXTRA_RESOLVE_OPTIONS: ${{ github.event.inputs.extra_resolve_options }}
 jobs:
   docker_builds:
     strategy:
       fail-fast: false
       matrix:
         config:
-          - container: ghcr.io/steinwurf/gcc-11.2.0
+          - container: ghcr.io/steinwurf/gcc-11.2.0:1.0.0
             cxx_mkspec: --cxx_mkspec=cxx_gxx112_x64
             name: GCC 11.2
             test_compiler: gcc
             test_os: linux
             test_arch: x86_64
-          - container: ghcr.io/steinwurf/gcc-6.3.0
+          - container: ghcr.io/steinwurf/gcc-6.3.0:1.0.0
             cxx_mkspec: --cxx_mkspec=cxx_gxx63_x64
             name: GCC 6.3
             test_compiler: gcc
             test_os: linux
             test_arch: x86_64
-          - container: ghcr.io/steinwurf/clang-3.9
+          - container: ghcr.io/steinwurf/clang-3.9:1.0.0
             name: Clang 3.9
             cxx_mkspec: --cxx_mkspec=cxx_clang39_x64
             test_compiler: clang
             test_os: linux
             test_arch: x86_64
-          - container: ghcr.io/steinwurf/clang-13
+          - container: ghcr.io/steinwurf/clang-13:1.0.0
             name: Clang 13
             cxx_mkspec: --cxx_mkspec=cxx_clang130_x64
             test_compiler: clang
             test_os: linux
             test_arch: x86_64
-          - container: ghcr.io/steinwurf/clang-13
+          - container: ghcr.io/steinwurf/clang-13:1.0.0
             cxx_mkspec: --cxx_mkspec=cxx_clang13_address_sanitizer_x64
             name: Clang 13 Address Sanitizer
             test_compiler: clang
@@ -51,7 +51,7 @@ jobs:
           # - container: ghcr.io/steinwurf/clang13
           #   cxx_mkspec: --cxx_mkspec=cxx_clang13_memory_sanitizer_x64
           #   name: Clang 13 Memory Sanitizer
-          - container: ghcr.io/steinwurf/clang-13
+          - container: ghcr.io/steinwurf/clang-13:1.0.0
             cxx_mkspec: --cxx_mkspec=cxx_clang13_thread_sanitizer_x64
             name: Clang 13 Thread Sanitizer
             test_compiler: clang
@@ -68,41 +68,13 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v2
       - name: Waf Configure
-        run: python3 waf configure --git_protocol=git@ ${{ matrix.config.cxx_mkspec }} -v --waf-tools_checkout="add-newer-compiler-versions" $EXTRA_RESOLVE_OPTIONS
+        run: python3 waf configure --git_protocol=git@ ${{ matrix.config.cxx_mkspec }} $EXTRA_RESOLVE_OPTIONS
       - name: Waf Build
         run: |
           echo "::add-matcher::.github/gcc-problem-matcher.json"
           python3 waf
       - name: Waf Test
         run: python3 waf --run_tests --run_cmd="%s --os=${{matrix.config.test_os}} --compiler=${{matrix.config.test_compiler}} --arch=${{matrix.config.test_arch}}"
-
-  cross-compile-raspberry-pi:
-    strategy:
-      fail-fast: false
-    runs-on: [self-hosted, docker, builder]
-    name: Raspberry Pi 3 Build
-    container:
-      image: ghcr.io/steinwurf/gcc-8.3.0-raspberrypi-armv7:1.0.0
-      options: --user 0:0
-      volumes:
-        - /home/buildbot/.ssh:/root/.ssh
-    steps:
-      - name: Checkout source code
-        uses: actions/checkout@v2
-      - name: Waf Configure
-        run: CXX=arm-linux-gnueabihf-g++ LD=$CXX python3 waf configure --git_protocol=git@ ${{ matrix.config.cxx_mkspec }} $EXTRA_RESOLVE_OPTIONS
-      - name: Waf Build
-        run: |
-          echo "::add-matcher::.github/gcc-problem-matcher.json"
-          python3 waf
-      - name: Upload platform_tests Artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: raspberry_platform_tests
-          path: |
-            build/linux/test
-            !build/linux/test/**/**.*
-          retention-days: 1
 
   # Build performed on runner using make specs
   cxx_mkspec:
