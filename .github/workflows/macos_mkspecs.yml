@@ -1,4 +1,4 @@
-name: C++ make-specs
+name: MacOS C++ make-specs
 on:
   workflow_dispatch:
     inputs:
