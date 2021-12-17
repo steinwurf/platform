@@ -17,7 +17,7 @@ jobs:
       name: Raspberry Pi 3
       cxx_mkspec: cxx_raspberry_gxx83_armv7
       image: ghcr.io/steinwurf/gcc-8.3.0-raspberrypi-armv7:1.0.0
-      test_runner: raspberry_pi_3
-      test_binary_name: platform_tests
+      test_runner: raspberry_pi
+      test_binary_name: platform_tests<
       test_binary_directory: build/cxx_raspberry_gxx83_armv7/test
       test_option: --os=linux --compiler=gcc --arch=arm
