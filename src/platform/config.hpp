@@ -121,6 +121,12 @@
 #if defined(__AVX2__)
 #define PLATFORM_AVX2 1
 #endif
+#if defined(__AVX512F__)
+#define PLATFORM_AVX512F 1
+#endif
+#if defined(__AVX512BW__)
+#define PLATFORM_AVX512BW 1
+#endif
 #if defined(__ARM_NEON__) || defined(__ARM_NEON)
 #define PLATFORM_NEON 1
 #endif
@@ -155,5 +161,10 @@
 #if (_MSC_VER >= 1700)
 #define PLATFORM_AVX 1
 #define PLATFORM_AVX2 1
+#endif
+// AVX-512 Visual Studio 2019 version 16.3
+#if (_MSC_VER >= 1923)
+#define PLATFORM_AVX512F 1
+#define PLATFORM_AVX512BW 1
 #endif
 #endif
