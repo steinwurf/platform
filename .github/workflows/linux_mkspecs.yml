@@ -47,10 +47,6 @@ jobs:
             test_compiler: clang
             test_os: linux
             test_arch: x86_64
-          # TODO: Re-able this when we have fixed memory issue in google-test
-          # - container: ghcr.io/steinwurf/clang13
-          #   cxx_mkspec: --cxx_mkspec=cxx_clang13_memory_sanitizer_x64
-          #   name: Clang 13 Memory Sanitizer
           - container: ghcr.io/steinwurf/clang-13:1.0.0
             cxx_mkspec: --cxx_mkspec=cxx_clang13_thread_sanitizer_x64
             name: Clang 13 Thread Sanitizer

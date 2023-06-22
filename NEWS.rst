@@ -6,6 +6,7 @@ every change, see the Git log.
 
 Latest
 ------
+* Major: Use waf-tools 5.
 * Minor: Updated waf.
 
 4.0.0

@@ -3,19 +3,19 @@
         "name": "waf-tools",
         "resolver": "git",
         "method": "semver",
-        "major": 4,
+        "major": 5,
         "sources": [
             "github.com/steinwurf/waf-tools.git"
         ]
     },
     {
-        "name": "boost",
+        "name": "cli11",
         "internal": true,
         "resolver": "git",
         "method": "semver",
-        "major": 4,
+        "major": 2,
         "sources": [
-            "github.com/steinwurf/boost.git"
+            "github.com/steinwurf/cli11.git"
         ]
     },
     {
@@ -23,7 +23,7 @@
         "internal": true,
         "resolver": "git",
         "method": "semver",
-        "major": 4,
+        "major": 5,
         "sources": [
             "github.com/steinwurf/gtest.git"
         ]

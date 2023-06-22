@@ -14,27 +14,16 @@ env:
 jobs:
   # Build performed on runner using make specs
   cxx_mkspec:
-    strategy:
-      fail-fast: false
-      matrix:
-        config:
-          - cxx_mkspec: cxx_apple_llvm120_x64
-            name: Apple LLVM 12.0 64-bit
-            test_compiler: clang
-            test_os: mac
-            test_arch: x86_64
-    runs-on: [self-hosted, "${{ matrix.config.cxx_mkspec }}", builder]
-    name: ${{ matrix.config.name }}
+    runs-on: [self-hosted, macOS, ARM64, builder]
+    name: Apple Big Sur (ARM)
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Configure
-        env:
-          GIT_SSH_COMMAND: "${{ runner.os != 'Linux' && 'ssh' || 'ssh -i /home/buildbot/.ssh/id_ed25519 -o IdentitiesOnly=yes' }}"
-        run: python3 waf configure --git_protocol=git@ --cxx_mkspec=${{ matrix.config.cxx_mkspec }} $EXTRA_RESOLVE_OPTIONS
+        run: python3 waf configure --git_protocol=git@ $EXTRA_RESOLVE_OPTIONS
       - name: Build
         run: |
           echo "::add-matcher::.github/gcc-problem-matcher.json"
           python3 waf
       - name: Test
-        run: python3 waf --run_tests --run_cmd="%s --os=${{matrix.config.test_os}} --compiler=${{matrix.config.test_compiler}} --arch=${{matrix.config.test_arch}}"
+        run: python3 waf --run_tests --run_cmd="%s --os=mac --compiler=clang --arch=arm"

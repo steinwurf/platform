@@ -3,30 +3,34 @@
 //
 // Distributed under the "BSD License". See the accompanying LICENSE.rst file.
 
-#include <boost/program_options.hpp>
+#include <CLI/CLI.hpp>
 #include <cstdint>
 #include <ctime>
+#include <map>
 
 #include <gtest/gtest.h>
 
-boost::program_options::variables_map variable_map;
+std::map<std::string, std::string> variable_map;
 
 GTEST_API_ int main(int argc, char** argv)
 {
-    namespace po = boost::program_options;
-
     testing::InitGoogleTest(&argc, argv);
 
-    po::options_description options;
-    options.add_options()("os", po::value<std::string>()->default_value(""),
-                          "Operating system: [linux|windows|mac|ios|android]")(
-        "compiler", po::value<std::string>()->default_value(""),
-        "Compiler: [gcc|clang|msvc]")(
-        "arch", po::value<std::string>()->default_value(""),
-        "Architecture: [x86|x86_64|arm|mips]");
+    CLI::App app;
 
-    po::store(po::parse_command_line(argc, argv, options), variable_map);
-    po::notify(variable_map);
+    app.add_option("--os", variable_map["os"],
+                   "Operating system: [linux|windows|mac|ios|android]")
+        ->default_val("");
+
+    app.add_option("--compiler", variable_map["compiler"],
+                   "Compiler: [gcc|clang|msvc]")
+        ->default_val("");
+
+    app.add_option("--arch", variable_map["arch"],
+                   "Architecture: [x86|x86_64|arm|mips]")
+        ->default_val("");
+
+    CLI11_PARSE(app, argc, argv);
 
     return RUN_ALL_TESTS();
 }

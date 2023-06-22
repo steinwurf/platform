@@ -17,13 +17,13 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - cxx_mkspec: cxx_msvc16_x86
-            name: MSVC 16 32-bit
+          - cxx_mkspec: cxx_msvc17_x86
+            name: MSVC 17 32-bit
             test_compiler: msvc
             test_os: windows
             test_arch: x86
-          - cxx_mkspec: cxx_msvc16_x64
-            name: MSVC 16 64-bit
+          - cxx_mkspec: cxx_msvc17_x64
+            name: MSVC 17 64-bit
             test_compiler: msvc
             test_os: windows
             test_arch: x86_64
