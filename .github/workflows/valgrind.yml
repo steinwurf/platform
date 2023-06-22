@@ -35,4 +35,4 @@ jobs:
           echo "::add-matcher::.github/gcc-problem-matcher.json"
           python3 waf
       - name: Valgrind Test
-        run: python3 waf --run_tests --run_cmd="valgrind %s  --os=${{env.test_os}} --compiler=${{env.test_compiler}} --arch=${{env.test_arch}}"
+        run: python3 waf --run_tests --run_cmd="valgrind %s --os=${{env.test_os}} --compiler=${{env.test_compiler}} --arch=${{env.test_arch}}"
