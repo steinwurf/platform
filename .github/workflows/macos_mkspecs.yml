@@ -9,8 +9,21 @@ on:
     - cron: "0 1 * * *" # 3 AM CET
   push:
   pull_request:
+env:
+  EXTRA_RESOLVE_OPTIONS: ${{ github.event.inputs.extra_resolve_options }}
 jobs:
-  MacOS-mkspecs:
-    uses: steinwurf/macos-mkspecs-action/.github/workflows/action.yml@7.0.0
-    with:
-      extra_resolve_options: ${{ github.event.inputs.extra_resolve_options }}
+  # Build performed on runner using make specs
+  cxx_mkspec:
+    runs-on: [self-hosted, macOS, ARM64, builder]
+    name: Apple Big Sur (ARM)
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Configure
+        run: python3 waf configure --git_protocol=git@ $EXTRA_RESOLVE_OPTIONS
+      - name: Build
+        run: |
+          echo "::add-matcher::.github/gcc-problem-matcher.json"
+          python3 waf
+      - name: Test
+        run: python3 waf --run_tests --run_cmd="%s --os=mac --compiler=clang --arch=arm"
