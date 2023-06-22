@@ -6,17 +6,16 @@
 #include <platform/config.hpp>
 
 #include <cstdint>
+#include <map>
 #include <string>
-
-#include <boost/program_options.hpp>
 
 #include <gtest/gtest.h>
 
-extern boost::program_options::variables_map variable_map;
+extern std::map<std::string, std::string> variable_map;
 
 TEST(Platform, check_operating_system)
 {
-    std::string os = variable_map["os"].as<std::string>();
+    std::string os = variable_map["os"];
 
 #if defined(PLATFORM_LINUX)
 #if defined(PLATFORM_ANDROID)
@@ -39,8 +38,8 @@ TEST(Platform, check_operating_system)
 
 TEST(Platform, check_compiler)
 {
-    std::string compiler = variable_map["compiler"].as<std::string>();
-    std::string arch = variable_map["arch"].as<std::string>();
+    std::string compiler = variable_map["compiler"];
+    std::string arch = variable_map["arch"];
 
 #if defined(PLATFORM_CLANG)
     EXPECT_EQ(compiler, "clang");
@@ -91,7 +90,7 @@ TEST(Platform, check_compiler)
 
 TEST(Platform, check_architecture)
 {
-    std::string arch = variable_map["arch"].as<std::string>();
+    std::string arch = variable_map["arch"];
 
 #if defined(PLATFORM_X86)
     EXPECT_TRUE(arch == "x86" || arch == "x86_64");
