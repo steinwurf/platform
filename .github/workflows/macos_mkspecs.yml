@@ -9,32 +9,8 @@ on:
     - cron: "0 1 * * *" # 3 AM CET
   push:
   pull_request:
-env:
-  EXTRA_RESOLVE_OPTIONS: ${{ github.event.inputs.extra_resolve_options }}
 jobs:
-  # Build performed on runner using make specs
-  cxx_mkspec:
-    strategy:
-      fail-fast: false
-      matrix:
-        config:
-          - cxx_mkspec: cxx_apple_llvm120_x64
-            name: Apple LLVM 12.0 64-bit
-            test_compiler: clang
-            test_os: mac
-            test_arch: x86_64
-    runs-on: [self-hosted, "${{ matrix.config.cxx_mkspec }}", builder]
-    name: ${{ matrix.config.name }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Configure
-        env:
-          GIT_SSH_COMMAND: "${{ runner.os != 'Linux' && 'ssh' || 'ssh -i /home/buildbot/.ssh/id_ed25519 -o IdentitiesOnly=yes' }}"
-        run: python3 waf configure --git_protocol=git@ --cxx_mkspec=${{ matrix.config.cxx_mkspec }} $EXTRA_RESOLVE_OPTIONS
-      - name: Build
-        run: |
-          echo "::add-matcher::.github/gcc-problem-matcher.json"
-          python3 waf
-      - name: Test
-        run: python3 waf --run_tests --run_cmd="%s --os=${{matrix.config.test_os}} --compiler=${{matrix.config.test_compiler}} --arch=${{matrix.config.test_arch}}"
+  MacOS-mkspecs:
+    uses: steinwurf/macos-mkspecs-action/.github/workflows/action.yml@7.0.0
+    with:
+      extra_resolve_options: ${{ github.event.inputs.extra_resolve_options }}
