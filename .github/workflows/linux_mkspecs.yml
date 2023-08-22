@@ -1,3 +1,14 @@
+name: Linux C++ make-specs
+'on':
+  workflow_dispatch:
+    inputs:
+      extra_resolve_options:
+        description: Extra Resolve Options
+        required: false
+  push:
+    branches:
+    - master
+  pull_request:
 concurrency:
   cancel-in-progress: true
   group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
@@ -70,16 +81,3 @@ jobs:
           test_arch: x86_64
           test_compiler: clang
           test_os: linux
-name: Linux C++ make-specs
-'on':
-  pull_request: null
-  push:
-    branches:
-    - master
-  schedule:
-  - cron: 0 1 * * *
-  workflow_dispatch:
-    inputs:
-      extra_resolve_options:
-        description: Extra Resolve Options
-        required: false
