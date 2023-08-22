@@ -71,3 +71,9 @@ jobs:
           python3 waf
       - name: Waf Test
         run: python3 waf --run_tests --run_cmd="%s --os=${{matrix.config.test_os}} --compiler=${{matrix.config.test_compiler}} --arch=${{matrix.config.test_arch}}"
+
+# Cancel previous in-progress when pushing: https://stackoverflow.com/a/72408109
+concurrency:
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
+  cancel-in-progress: true
