@@ -39,8 +39,8 @@ jobs:
       - name: Test
         run: python3 waf --run_tests --run_cmd="%s --os=${{env.test_os}} --compiler=${{env.test_compiler}} --arch=${{env.test_arch}}"
 
+
 # Cancel previous in-progress when pushing: https://stackoverflow.com/a/72408109
-concurrency:
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
   cancel-in-progress: true
@@ -49,3 +49,11 @@ concurrency:
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
   cancel-in-progress: true
+
+
+
+# Cancel previous in-progress when pushing: https://stackoverflow.com/a/72408109
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
+  cancel-in-progress: true
+
