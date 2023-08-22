@@ -8,10 +8,7 @@ name: MacOS C++ make-specs
   push:
     branches:
     - master
-  pull_request:
-concurrency:
-  cancel-in-progress: true
-  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
+  pull_request: null
 env:
   EXTRA_RESOLVE_OPTIONS: ${{ github.event.inputs.extra_resolve_options }}
 jobs:
@@ -35,3 +32,6 @@ jobs:
         '
     - name: Test
       run: python3 waf --run_tests --run_cmd="%s --os=mac --compiler=clang --arch=arm"
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
+  cancel-in-progress: true
