@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 APPNAME = "platform"
-VERSION = "5.1.0"
+VERSION = "5.1.1"
 
 
 def build(bld):

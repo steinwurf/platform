@@ -6,6 +6,10 @@ every change, see the Git log.
 
 Latest
 ------
+* tbd
+
+5.1.1
+-----
 * Patch: Fixed FreeBSD detection.
 
 5.1.0
