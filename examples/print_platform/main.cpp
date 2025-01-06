@@ -65,6 +65,14 @@ int main()
 #endif
     std::cout << std::endl;
 
+    std::cout << "PLATFORM_FREEBSD ";
+#if defined(PLATFORM_FREEBSD)
+    std::cout << "1";
+#else
+    std::cout << "0";
+#endif
+    std::cout << std::endl;
+
     std::cout << "PLATFORM_CLANG ";
 #if defined(PLATFORM_CLANG)
     std::cout << "1";

@@ -6,7 +6,7 @@ every change, see the Git log.
 
 Latest
 ------
-* tbd
+* Minor: Added support for detecting FreeBSD.
 
 5.0.0
 -----
