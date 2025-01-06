@@ -13,7 +13,7 @@
 
 extern std::map<std::string, std::string> variable_map;
 
-TEST(Platform, check_operating_system)
+TEST(test_config, operating_system)
 {
     std::string os = variable_map["os"];
 
@@ -31,12 +31,14 @@ TEST(Platform, check_operating_system)
     EXPECT_EQ(os, "ios");
 #elif defined(PLATFORM_EMSCRIPTEN)
     EXPECT_EQ(os, "emscripten");
+#elif defined(PLATFORM_FREEBSD)
+    EXPECT_EQ(os, "freebsd");
 #else
-#error "Undefined operating system"
+#error "Unknown operating system"
 #endif
 }
 
-TEST(Platform, check_compiler)
+TEST(test_config, compiler_arch)
 {
     std::string compiler = variable_map["compiler"];
     std::string arch = variable_map["arch"];
@@ -57,7 +59,7 @@ TEST(Platform, check_compiler)
     EXPECT_EQ(arch, "asmjs");
     EXPECT_TRUE(PLATFORM_GCC_COMPATIBLE_ASMJS);
 #else
-#error "Undefined CPU architecture"
+#error "Unknown CPU architecture"
 #endif
 #elif defined(PLATFORM_GCC)
     EXPECT_EQ(compiler, "gcc");
@@ -72,7 +74,7 @@ TEST(Platform, check_compiler)
     EXPECT_EQ(arch, "mips");
     EXPECT_TRUE(PLATFORM_GCC_COMPATIBLE_MIPS);
 #else
-#error "Undefined CPU architecture"
+#error "Unknown CPU architecture"
 #endif
 #elif defined(PLATFORM_MSVC)
     EXPECT_EQ(compiler, "msvc");
@@ -81,10 +83,10 @@ TEST(Platform, check_compiler)
 #elif defined(PLATFORM_MSVC_ARM)
     EXPECT_EQ(arch, "arm");
 #else
-#error "Undefined CPU architecture"
+#error "Unknown CPU architecture"
 #endif
 #else
-#error "Undefined compiler"
+#error "Unknown compiler"
 #endif
 }
 
@@ -101,6 +103,6 @@ TEST(Platform, check_architecture)
 #elif defined(PLATFORM_ASMJS)
     EXPECT_EQ(arch, "asmjs");
 #else
-#error "Undefined CPU architecture"
+#error "Unknown CPU architecture"
 #endif
 }

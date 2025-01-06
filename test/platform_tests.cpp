@@ -18,16 +18,17 @@ GTEST_API_ int main(int argc, char** argv)
 
     CLI::App app;
 
-    app.add_option("--os", variable_map["os"],
-                   "Operating system: [linux|windows|mac|ios|android]")
+    app.add_option("--os", variable_map["os"], "Operating system")
+        ->check(CLI::IsMember({"", "linux", "windows", "mac", "ios",
+                               "emscripten", "freebsd", "android"}))
         ->default_val("");
 
-    app.add_option("--compiler", variable_map["compiler"],
-                   "Compiler: [gcc|clang|msvc]")
+    app.add_option("--compiler", variable_map["compiler"], "Compiler")
+        ->check(CLI::IsMember({"", "clang", "gcc", "msvc"}))
         ->default_val("");
 
-    app.add_option("--arch", variable_map["arch"],
-                   "Architecture: [x86|x86_64|arm|mips]")
+    app.add_option("--arch", variable_map["arch"], "Architecture")
+        ->check(CLI::IsMember({"", "x86", "x86_64", "arm", "mips", "asmjs"}))
         ->default_val("");
 
     CLI11_PARSE(app, argc, argv);
