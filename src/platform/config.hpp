@@ -33,7 +33,7 @@
 #endif
 #elif defined(__EMSCRIPTEN__)
 #define PLATFORM_EMSCRIPTEN 1
-#elif defined(__FREEBSD__)
+#elif defined(__FreeBSD__)
 #define PLATFORM_FREEBSD 1
 #else
 #error "Unable to determine operating system"
