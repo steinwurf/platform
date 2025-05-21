@@ -5,15 +5,22 @@ APPNAME = "platform"
 VERSION = "5.1.1"
 
 
-def build(bld):
-    bld.env.append_unique(
-        "DEFINES_STEINWURF_VERSION", 'STEINWURF_PLATFORM_VERSION="{}"'.format(VERSION)
-    )
+def options(ctx):
 
-    bld(includes="./src", export_includes="./src", name="platform_includes")
+    ctx.load("cmake")
 
-    if bld.is_toplevel():
-        # Only build tests when executed from the top-level wscript,
-        # i.e. not when included as a dependency
-        bld.recurse("test")
-        bld.recurse("examples/print_platform")
+
+def configure(ctx):
+
+    ctx.load("cmake")
+
+    if ctx.is_toplevel():
+        ctx.cmake_configure()
+
+
+def build(ctx):
+
+    ctx.load("cmake")
+
+    if ctx.is_toplevel():
+        ctx.cmake_build()
