@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 APPNAME = "platform"
-VERSION = "5.1.1"
+VERSION = "6.0.0"
 
 
 def options(ctx):
