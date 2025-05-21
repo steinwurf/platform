@@ -19,4 +19,7 @@ if(${CMAKE_PROJECT_NAME} STREQUAL ${PROJECT_NAME})
   # Build executables
   add_executable(print_platform examples/print_platform/main.cpp)
   target_link_libraries(print_platform platform)
+
+  enable_testing()
+  add_test(print_platform print_platform)
 endif()
