@@ -6,6 +6,10 @@ every change, see the Git log.
 
 Latest
 ------
+* tbd
+
+6.1.0
+-----
 * Minor: Added support for detecting 32-bit and 64-bit Windows targets.
 
 6.0.0
