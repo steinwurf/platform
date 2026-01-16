@@ -1,9 +1,0 @@
-#! /usr/bin/env python
-# encoding: utf-8
-
-bld.program(
-    features="cxx",
-    source=bld.path.ant_glob("*.cpp"),
-    target="print_platform_example",
-    use=["platform_includes"],
-)

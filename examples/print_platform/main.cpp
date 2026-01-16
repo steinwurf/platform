@@ -33,6 +33,22 @@ int main()
 #endif
     std::cout << std::endl;
 
+    std::cout << "PLATFORM_WINDOWS_64 ";
+#if defined(PLATFORM_WINDOWS_64)
+    std::cout << "1";
+#else
+    std::cout << "0";
+#endif
+    std::cout << std::endl;
+
+    std::cout << "PLATFORM_WINDOWS_32 ";
+#if defined(PLATFORM_WINDOWS_32)
+    std::cout << "1";
+#else
+    std::cout << "0";
+#endif
+    std::cout << std::endl;
+
     std::cout << "PLATFORM_WINDOWS_PHONE ";
 #if defined(PLATFORM_WINDOWS_PHONE)
     std::cout << "1";
