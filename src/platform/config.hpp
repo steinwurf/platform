@@ -16,8 +16,13 @@
 #if defined(__ANDROID__)
 #define PLATFORM_ANDROID 1
 #endif
-#elif defined(_WIN32)
+#elif defined(_WIN32) // _WIN32 is defined for both 32bit and 64bit Windows
 #define PLATFORM_WINDOWS 1
+#if defined(_WIN64)
+#define PLATFORM_WINDOWS_64 1
+#else // _WIN32 and not _WIN64
+#define PLATFORM_WINDOWS_32 1
+#endif
 #if defined(WINAPI_FAMILY)
 #include <winapifamily.h>
 #if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_PHONE_APP)
